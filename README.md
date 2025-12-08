@@ -1,2 +1,2 @@
-# 2025-2026-building-production-grade-dApps
+# 2026-h1-building-production-grade-dApps
 Building Production-Grade dApps Course
