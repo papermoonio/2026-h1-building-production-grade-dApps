@@ -1,0 +1,33 @@
+
+import { ethers } from "ethers";
+
+async function main() {
+    // faucet https://faucet.polkadot.io/ Paseo AssetHub
+    //const URL = "https://services.polkadothub-rpc.com/testnet";
+
+    // faucet https://faucet.polkadot.io/ Paseo Passet Hub: smart contracts
+    const URL = "https://testnet-passet-hub-eth-rpc.polkadot.io";
+
+    const provider = new ethers.JsonRpcProvider(URL);
+    //const address = "0x5e0774b9f1B5737c2c5e2eb88a6ca2eD08D9D629"; // id=1963 address
+
+    //const address = "0xDAA5A34D500799935C065282D24853e467D0497c"; // id=1951 address 1
+    //const address = "0xFFFD03393DBD34Ee529E5f056d2Fd12769965B0c"; // id=1951 address 2
+    //const address = "0xcaa71B17af09BA6cdF365943f2ef346e1308Eb33"; // id=1951 address 3
+    //const address = "0xA75Aab290Be63b6e22A3fD98E2a4d928D758d689"; // id=1951 eth_account1 of talisman
+    //const address = "0x4A622DaB8485AbaF718Fa40073747EE13d7110df"; // id=1951 eth_account1 of subwallet
+
+    const address1 = "0xDAA5A34D500799935C065282D24853e467D0497c"; // id=1951 address 1
+    const balance1 = await provider.getBalance(address1);
+    console.log(`metamask eth_account1: eth-rpc: ${URL}, Balance of ${address1}: ${ethers.formatEther(balance1)} PAS`);
+
+    const address2 = "0xA75Aab290Be63b6e22A3fD98E2a4d928D758d689"; // id=1951 eth_account1 of talisman
+    const balance2 = await provider.getBalance(address2);
+    console.log(`talisman eth_account1: eth-rpc: ${URL}, Balance of ${address2}: ${ethers.formatEther(balance2)} PAS`);
+
+    const address3 = "0x4A622DaB8485AbaF718Fa40073747EE13d7110df"; // id=1951 eth_account1 of subwallet
+    const balance3 = await provider.getBalance(address3);
+    console.log(`subwallet eth_account1: eth-rpc: ${URL}, Balance of ${address3}: ${ethers.formatEther(balance3)} PAS`);
+}
+
+main();

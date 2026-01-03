@@ -1,0 +1,38 @@
+import { ethers, getAddress } from "ethers";
+
+async function main() {
+    // 1. Correct RPC for Revive Testnet
+    const ETH_RPC_URL = "https://services.polkadothub-rpc.com/testnet";
+    const rawAddress = "0xDAA5A34D500799935C065282D24853e467D0497c";
+
+    try {
+        // 2. VALIDATION & NORMALIZATION
+        // This step is crucial. getAddress() converts the string to a Checksum Address
+        // and strips any accidental whitespace, preventing the ENS lookup.
+        const address = getAddress(rawAddress.trim());
+
+        // 3. Setup Provider
+        const provider = new ethers.JsonRpcProvider(ETH_RPC_URL);
+
+        // 4. Query Balance
+        console.log(`Querying balance for ${address}...`);
+        const balance = await provider.getBalance(address);
+
+        // 5. Output
+        console.log(`-----------------------------------------`);
+        console.log(`[EVM Address] : ${address}`);
+        console.log(`[Balance]     : ${ethers.formatEther(balance)} WND`);
+        console.log(`-----------------------------------------`);
+
+    } catch (e: any) {
+        if (e.code === 'INVALID_ARGUMENT') {
+            console.error("❌ Invalid Address: Ensure your 0x address is correct.");
+        } else if (e.message.includes("network does not support ENS")) {
+            console.error("❌ ENS Error: The network rejected the name lookup. Is the address malformed?");
+        } else {
+            console.error("❌ Error:", e.message);
+        }
+    }
+}
+
+main().catch(console.error);
