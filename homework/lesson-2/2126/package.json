@@ -1,0 +1,32 @@
+{
+  "name": "lesson-2-homework-2126",
+  "version": "1.0.0",
+  "description": "Address conversion and precompile testing for Polkadot Revive",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "node test/run-all-tests.js",
+    "test:address": "node test/address.test.js",
+    "test:balance": "node test/balance.test.js",
+    "test:precompile": "node test/precompile.test.js"
+  },
+  "keywords": [
+    "polkadot",
+    "revive",
+    "evm",
+    "substrate",
+    "address-conversion"
+  ],
+  "author": "Student 2126",
+  "license": "MIT",
+  "dependencies": {
+    "@polkadot/api": "^12.0.2",
+    "@polkadot/util": "^12.6.2",
+    "@polkadot/util-crypto": "^12.6.2",
+    "ethers": "^6.16.0",
+    "polkadot-api": "^1.23.1",
+    "@polkadot-api/descriptors": "file:.papi/descriptors",
+    "@polkadot-labs/hdkd": "^0.0.25",
+    "@polkadot-labs/hdkd-helpers": "^0.0.25"
+  }
+}
