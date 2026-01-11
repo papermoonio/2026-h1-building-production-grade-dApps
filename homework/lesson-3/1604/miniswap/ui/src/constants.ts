@@ -1,4 +1,4 @@
-export const MiniSwap_ADDRESS = "0x0000000000000000000000000000000000000000";
+export const MiniSwap_ADDRESS = "0x493275370aF3f63d9ccd10a6539435121cF4fbb9";
 export const ERC20_ABI = [
     {
         "constant": true,
