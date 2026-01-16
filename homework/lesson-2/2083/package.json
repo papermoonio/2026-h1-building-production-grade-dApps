@@ -1,0 +1,30 @@
+{
+  "name": "moonbeam-address-converter",
+  "version": "1.0.0",
+  "description": "Substrate SS58 <-> EVM H160 address conversion and precompile interaction",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "convert": "node src/addressConverter.js",
+    "balance": "node src/balanceCheck.js",
+    "precompile": "node src/precompileCall.js",
+    "test": "node src/test.js"
+  },
+  "dependencies": {
+    "@polkadot/api": "^12.0.0",
+    "@polkadot/util": "^12.0.0",
+    "@polkadot/util-crypto": "^12.0.0",
+    "ethers": "^6.9.0",
+    "web3": "^4.3.0"
+  },
+  "keywords": [
+    "moonbeam",
+    "polkadot",
+    "substrate",
+    "evm",
+    "address-conversion",
+    "precompile"
+  ],
+  "author": "2083",
+  "license": "MIT"
+}

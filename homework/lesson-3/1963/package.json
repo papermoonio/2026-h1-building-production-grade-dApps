@@ -1,0 +1,25 @@
+{
+  "name": "miniswap-lesson-3",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "A minimal Uniswap V2-like AMM (Automated Market Maker) implementation for Polkadot",
+  "scripts": {
+    "dev": "echo 'Please run from frontend directory'",
+    "test:contracts": "echo 'Run contract tests'",
+    "test:uniswap": "echo 'Run Uniswap V2 test cases'",
+    "test:e2e": "echo 'Run integration tests'",
+    "deploy:testhub": "NO_PROXY=testnet-passet-hub-eth-rpc.polkadot.io,*.polkadot.io npx hardhat run scripts/deploy.js --network testhub"
+  },
+  "keywords": [
+    "polkadot",
+    "defi",
+    "amm",
+    "uniswap"
+  ],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "@nomicfoundation/hardhat-toolbox": "^6.1.0",
+    "hardhat": "^2.28.3"
+  }
+}

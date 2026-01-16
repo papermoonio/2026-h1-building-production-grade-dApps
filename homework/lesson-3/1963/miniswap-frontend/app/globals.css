@@ -1,0 +1,310 @@
+@import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #faf8f5;
+  --foreground: #1a1a1a;
+  --pink-primary: #FF69B4;
+  --pink-light: #FFB6C1;
+  --pink-dark: #C71585;
+  --off-white: #faf8f5;
+  --baby-blue: #87CEEB;
+  --baby-blue-light: #B0E0E6;
+  --baby-blue-dark: #5F9EA0;
+  --glass-bg: rgba(255, 255, 255, 0.7);
+  --glass-border: rgba(255, 182, 193, 0.3);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+body {
+  background: linear-gradient(135deg, #87CEEB 0%, #B0E0E6 30%, #E0F6FF 60%, #87CEEB 100%);
+  background-attachment: fixed;
+  color: var(--foreground);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* Animated clouds - actual cloud shapes */
+body::before,
+body::after {
+  content: '';
+  position: fixed;
+  z-index: 0;
+  animation: float 20s infinite ease-in-out;
+  pointer-events: none;
+}
+
+/* Cloud shape using multiple circles */
+body::before {
+  width: 300px;
+  height: 120px;
+  top: 10%;
+  left: -50px;
+  background: rgba(250, 248, 245, 0.6);
+  border-radius: 50px;
+  box-shadow: 
+    60px 0 0 -20px rgba(250, 248, 245, 0.6),
+    120px 0 0 -30px rgba(250, 248, 245, 0.6),
+    180px 0 0 -20px rgba(250, 248, 245, 0.6),
+    30px -30px 0 -10px rgba(250, 248, 245, 0.6),
+    90px -30px 0 -20px rgba(250, 248, 245, 0.6),
+    150px -30px 0 -10px rgba(250, 248, 245, 0.6);
+  animation-delay: 0s;
+}
+
+body::after {
+  width: 400px;
+  height: 140px;
+  top: 30%;
+  right: -100px;
+  background: rgba(250, 248, 245, 0.5);
+  border-radius: 60px;
+  box-shadow: 
+    70px 0 0 -25px rgba(250, 248, 245, 0.5),
+    140px 0 0 -35px rgba(250, 248, 245, 0.5),
+    210px 0 0 -25px rgba(250, 248, 245, 0.5),
+    280px 0 0 -20px rgba(250, 248, 245, 0.5),
+    35px -35px 0 -15px rgba(250, 248, 245, 0.5),
+    105px -35px 0 -25px rgba(250, 248, 245, 0.5),
+    175px -35px 0 -15px rgba(250, 248, 245, 0.5),
+    245px -35px 0 -10px rgba(250, 248, 245, 0.5);
+  animation-delay: 5s;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateX(0) translateY(0);
+  }
+  33% {
+    transform: translateX(30px) translateY(-20px);
+  }
+  66% {
+    transform: translateX(-20px) translateY(10px);
+  }
+}
+
+/* Additional cloud elements - actual cloud shapes */
+.cloud-1,
+.cloud-2,
+.cloud-3 {
+  position: fixed;
+  z-index: 0;
+  animation: float 25s infinite ease-in-out;
+  pointer-events: none;
+}
+
+.cloud-1 {
+  width: 250px;
+  height: 100px;
+  top: 50%;
+  left: 10%;
+  background: rgba(250, 248, 245, 0.5);
+  border-radius: 50px;
+  box-shadow: 
+    50px 0 0 -15px rgba(250, 248, 245, 0.5),
+    100px 0 0 -25px rgba(250, 248, 245, 0.5),
+    150px 0 0 -15px rgba(250, 248, 245, 0.5),
+    25px -25px 0 -10px rgba(250, 248, 245, 0.5),
+    75px -25px 0 -20px rgba(250, 248, 245, 0.5),
+    125px -25px 0 -10px rgba(250, 248, 245, 0.5);
+  animation-delay: 2s;
+}
+
+.cloud-2 {
+  width: 350px;
+  height: 120px;
+  top: 70%;
+  right: 15%;
+  background: rgba(250, 248, 245, 0.45);
+  border-radius: 60px;
+  box-shadow: 
+    60px 0 0 -20px rgba(250, 248, 245, 0.45),
+    120px 0 0 -30px rgba(250, 248, 245, 0.45),
+    180px 0 0 -20px rgba(250, 248, 245, 0.45),
+    240px 0 0 -15px rgba(250, 248, 245, 0.45),
+    30px -30px 0 -15px rgba(250, 248, 245, 0.45),
+    90px -30px 0 -25px rgba(250, 248, 245, 0.45),
+    150px -30px 0 -15px rgba(250, 248, 245, 0.45),
+    210px -30px 0 -10px rgba(250, 248, 245, 0.45);
+  animation-delay: 8s;
+}
+
+.cloud-3 {
+  width: 200px;
+  height: 80px;
+  top: 20%;
+  left: 60%;
+  background: rgba(250, 248, 245, 0.55);
+  border-radius: 40px;
+  box-shadow: 
+    40px 0 0 -12px rgba(250, 248, 245, 0.55),
+    80px 0 0 -20px rgba(250, 248, 245, 0.55),
+    120px 0 0 -12px rgba(250, 248, 245, 0.55),
+    20px -20px 0 -8px rgba(250, 248, 245, 0.55),
+    60px -20px 0 -15px rgba(250, 248, 245, 0.55),
+    100px -20px 0 -8px rgba(250, 248, 245, 0.55);
+  animation-delay: 12s;
+}
+
+/* Glass morphism effect */
+.glass {
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 182, 193, 0.15);
+  box-shadow: 0 8px 32px 0 rgba(255, 105, 180, 0.1);
+}
+
+.glass-strong {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(30px);
+  -webkit-backdrop-filter: blur(30px);
+  border: 1px solid rgba(255, 182, 193, 0.2);
+  box-shadow: 0 12px 40px 0 rgba(255, 105, 180, 0.15);
+}
+
+/* iPhone 17 Pro frame - exact dimensions (393 x 852 viewport, accounting for notch) */
+.iphone-frame {
+  width: 393px;
+  height: 852px;
+  margin: 0 auto;
+  background: #000;
+  border-radius: 50px;
+  padding: 4px;
+  box-shadow: 
+    0 15px 50px rgba(0, 0, 0, 0.25);
+  position: relative;
+  z-index: 1;
+  /* Ensure frame doesn't grow beyond actual iPhone size */
+  max-width: 393px;
+  max-height: 852px;
+  flex-shrink: 0;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.iphone-frame::before {
+  content: '';
+  position: absolute;
+  top: 12px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 140px;
+  height: 28px;
+  background: #000;
+  border-radius: 0 0 18px 18px;
+  z-index: 10;
+}
+
+.iphone-screen {
+  background: linear-gradient(135deg, #FFE4E1 0%, #FFF0F5 30%, #FFB6C1 60%, #FFE4E1 100%);
+  border-radius: 46px;
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  /* Exact screen dimensions: 393px - 8px padding = 385px width, 844px - 8px padding = 836px height */
+  min-height: 0;
+}
+
+/* Smooth animations */
+* {
+  transition: all 0.2s ease;
+}
+
+/* Enhanced transitions for specific elements */
+button {
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+button:hover {
+  transform: translateY(-1px);
+}
+
+button:active {
+  transform: translateY(0) scale(0.98);
+}
+
+button:disabled {
+  transform: none;
+}
+
+/* Smooth fade-in animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in {
+  animation: fadeIn 0.3s ease-out;
+}
+
+/* Smooth scale animations */
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.scale-in {
+  animation: scaleIn 0.2s ease-out;
+}
+
+/* Spinner animation (already handled by Tailwind animate-spin, but ensure smooth) */
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-spin {
+  animation: spin 1s linear infinite;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(255, 182, 193, 0.1);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 105, 180, 0.3);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 105, 180, 0.5);
+}

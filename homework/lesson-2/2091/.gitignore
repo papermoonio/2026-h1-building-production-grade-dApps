@@ -1,0 +1,54 @@
+# 依赖
+node_modules/
+.pnpm-store/
+.yarn/
+
+# 构建产物
+dist/
+build/
+*.tsbuildinfo
+
+# 日志
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# 环境变量
+.env
+.env.local
+.env.*.local
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# 操作系统
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# polkadot-api 生成的文件
+.papi/
+
+# TypeScript
+*.d.ts.map
+
+# 测试覆盖率
+coverage/
+.nyc_output/
+
+# 临时文件
+tmp/
+temp/
+*.tmp
+
+Lock
+package-lock.json
+# yarn.lock
+pnpm-lock.yaml

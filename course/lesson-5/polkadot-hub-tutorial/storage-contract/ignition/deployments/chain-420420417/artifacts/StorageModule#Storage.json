@@ -1,0 +1,53 @@
+{
+  "_format": "hh3-artifact-1",
+  "contractName": "Storage",
+  "sourceName": "contracts/Storage.sol",
+  "abi": [
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "newNumber",
+          "type": "uint256"
+        }
+      ],
+      "name": "NumberStored",
+      "type": "event"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "_number",
+          "type": "uint256"
+        }
+      ],
+      "name": "setNumber",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "storedNumber",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    }
+  ],
+  "bytecode": "0x6080604052348015600e575f5ffd5b5060e48061001b5f395ff3fe6080604052348015600e575f5ffd5b50600436106030575f3560e01c806309ce9ccb1460345780633fb5c1cb14604d575b5f5ffd5b603b5f5481565b60405190815260200160405180910390f35b605c60583660046098565b605e565b005b5f8190556040518181527f3564ffb2fd8f93d7b0e9d1173ffdff5ee9775d860bfe82eaca0d0dbe07c8b6349060200160405180910390a150565b5f6020828403121560a7575f5ffd5b503591905056fea264697066735822122032b2406c0a280fd84c02c5af533058548d1fbcf26319d6f2bf5ad4d6afeafb8164736f6c634300081c0033",
+  "deployedBytecode": "0x6080604052348015600e575f5ffd5b50600436106030575f3560e01c806309ce9ccb1460345780633fb5c1cb14604d575b5f5ffd5b603b5f5481565b60405190815260200160405180910390f35b605c60583660046098565b605e565b005b5f8190556040518181527f3564ffb2fd8f93d7b0e9d1173ffdff5ee9775d860bfe82eaca0d0dbe07c8b6349060200160405180910390a150565b5f6020828403121560a7575f5ffd5b503591905056fea264697066735822122032b2406c0a280fd84c02c5af533058548d1fbcf26319d6f2bf5ad4d6afeafb8164736f6c634300081c0033",
+  "linkReferences": {},
+  "deployedLinkReferences": {},
+  "immutableReferences": {},
+  "inputSourceName": "project/contracts/Storage.sol",
+  "buildInfoId": "solc-0_8_28-3f272939614605088889c85e03f9d0e7478e0ff0"
+}
