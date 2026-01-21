@@ -1,0 +1,39 @@
+{
+  "network": "polkadotTestnet",
+  "rpc": "https://services.polkadothub-rpc.com/testnet",
+  "deployer": "0xef791A1EE7e54D9BD12Af8Ca01D1d582375B5BFa",
+  "deployTxHash": "0xde0cfb171663eadcd4c06d49cbe6bf7e5afa97f678dffc339b0ee0071e6706aa",
+  "proxyAddress": "0x2cDDd887307d94468FaC96b4d76d3A68275e900A",
+  "implementationAddress": "0xd91CE4dD6F9dB82D8eBFAc1812B91FbdD9f95EFF",
+  "deployedAt": "2026-01-21T11:01:13.094Z",
+  "initialStorage": {
+    "version": "1",
+    "count": "150",
+    "name": "MyUpgradeableCounter",
+    "lastUpdated": "1768993224"
+  },
+  "upgradeTxHash": "查看区块浏览器获取升级交易",
+  "oldImplementationAddress": "0xd91CE4dD6F9dB82D8eBFAc1812B91FbdD9f95EFF",
+  "newImplementationAddress": "0xE9B412a6F328F84A8EdBF985AdC77BAc1D77F845",
+  "upgradedAt": "2026-01-21T11:05:10.508Z",
+  "storageComparison": {
+    "before": {
+      "version": "1",
+      "count": "150",
+      "name": "MyUpgradeableCounter",
+      "lastUpdated": "1768993260"
+    },
+    "after": {
+      "version": "2",
+      "count": "999",
+      "name": "MyUpgradeableCounter",
+      "lastUpdated": "1768993500",
+      "updateCount": "3",
+      "maxCount": "10000"
+    }
+  },
+  "newFields": {
+    "updateCount": "3",
+    "maxCount": "10000"
+  }
+}
