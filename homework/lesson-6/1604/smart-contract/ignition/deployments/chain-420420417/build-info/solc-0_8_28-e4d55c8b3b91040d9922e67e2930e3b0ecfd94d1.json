@@ -1,0 +1,39 @@
+{
+  "_format": "hh3-sol-build-info-1",
+  "id": "solc-0_8_28-e4d55c8b3b91040d9922e67e2930e3b0ecfd94d1",
+  "solcVersion": "0.8.28",
+  "solcLongVersion": "0.8.28+commit.7893614a",
+  "userSourceNameMap": {
+    "contracts/ERC1604FT.sol": "project/contracts/ERC1604FT.sol"
+  },
+  "input": {
+    "language": "Solidity",
+    "settings": {
+      "evmVersion": "cancun",
+      "optimizer": {
+        "enabled": true,
+        "runs": 200
+      },
+      "outputSelection": {
+        "*": {
+          "": [
+            "ast"
+          ],
+          "*": [
+            "abi",
+            "evm.bytecode",
+            "evm.deployedBytecode",
+            "evm.methodIdentifiers",
+            "metadata"
+          ]
+        }
+      },
+      "remappings": []
+    },
+    "sources": {
+      "project/contracts/ERC1604FT.sol": {
+        "content": "// SPDX-License-Identifier: MIT\npragma solidity ^0.8.20;\n\n\ninterface IERC20 {\n    function totalSupply() external view returns (uint256);\n    function balanceOf(address account) external view returns (uint256);\n    function transfer(address recipient, uint256 amount)\n        external\n        returns (bool);\n    function allowance(address owner, address spender)\n        external\n        view\n        returns (uint256);\n    function approve(address spender, uint256 amount) external returns (bool);\n    function transferFrom(address sender, address recipient, uint256 amount)\n        external\n        returns (bool);\n}\n\n\ncontract ERC1604FT is IERC20\n{\n    string public name;\n    string public symbol;\n    uint8 public decimals;\n    uint256 public totalSupply;\n\n\n    mapping(address => uint256) public balanceOf;\n    mapping(address => mapping(address => uint256)) public allowance;\n\n\n    constructor(string memory _name, string memory _symbol, uint256 _initialSupply)\n    {\n        name = _name;\n        symbol = _symbol;\n        decimals = 18;\n        totalSupply = _initialSupply * 10 ** 18;\n        balanceOf[msg.sender] = totalSupply;\n    }\n\n\n    event Transfer(address indexed from, address indexed to, uint256 value);\n    event Approval(address indexed owner, address indexed spender, uint256 value);\n\n\n    function transfer(address _to, uint256 _value) public returns (bool success)\n    {\n        require(balanceOf[msg.sender] >= _value, \"Insufficient balance\");\n        require(_to != address(0), \"Invalid address\");\n        balanceOf[msg.sender] -= _value;\n        balanceOf[_to] += _value;\n        emit Transfer(msg.sender, _to, _value);\n        return true;\n    }\n\n\n    function approve(address _spender, uint256 _value) public returns (bool success)\n    {\n        require(_spender != address(0), \"Invalid address\");\n        allowance[msg.sender][_spender] = _value;\n        emit Approval(msg.sender, _spender, _value);\n        return true;\n    }\n\n\n    function transferFrom(address _from, address _to, uint256 _value) public returns (bool success)\n    {\n        require(balanceOf[_from] >= _value, \"Insufficient balance\");\n        require(_to != address(0), \"Invalid address\");\n        require(allowance[_from][msg.sender] >= _value, \"Allowance exceeded\");\n        balanceOf[_from] -= _value;\n        balanceOf[_to] += _value;\n        allowance[_from][msg.sender] -= _value;\n        emit Transfer(_from, _to, _value);\n        return true;\n    }\n\n\n    function mint(uint256 amount) public\n    {\n        totalSupply += amount * 10**18;\n        balanceOf[msg.sender] += amount * 10**18;\n        emit Transfer(address(0), msg.sender, amount * 10**18);\n    }\n}"
+      }
+    }
+  }
+}

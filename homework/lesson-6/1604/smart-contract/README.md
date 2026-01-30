@@ -30,9 +30,9 @@ npx hardhat test solidity
 npx hardhat test nodejs
 ```
 
-### Make a deployment to Sepolia
+### Make a deployment to Polkadot TestNet
 
-This project includes an example Ignition module to deploy the contract. You can deploy this module to a locally simulated chain or to Sepolia.
+This project includes an example Ignition module to deploy the contract. You can deploy this module to a locally simulated chain or to Polkadot TestNet.
 
 To run the deployment to a local chain:
 
@@ -40,18 +40,22 @@ To run the deployment to a local chain:
 npx hardhat ignition deploy ignition/modules/Counter.ts
 ```
 
-To run the deployment to Sepolia, you need an account with funds to send the transaction. The provided Hardhat configuration includes a Configuration Variable called `SEPOLIA_PRIVATE_KEY`, which you can use to set the private key of the account you want to use.
-
-You can set the `SEPOLIA_PRIVATE_KEY` variable using the `hardhat-keystore` plugin or by setting it as an environment variable.
-
-To set the `SEPOLIA_PRIVATE_KEY` config variable using `hardhat-keystore`:
+To run the deployment to Polkadot TestNet, you can run the deployment with the Polkadot TestNet network:
 
 ```shell
-npx hardhat keystore set SEPOLIA_PRIVATE_KEY
-```
+$ npx hardhat ignition deploy ./ignition/modules/ERC1604FT.ts --network polkadotTestNet
+[dotenv@17.2.3] injecting env (1) from .env -- tip: 🔐 prevent committing .env to code: https://dotenvx.com/precommit
+✔ Confirm deploy to network polkadotTestNet (420420417)? … yes
+Hardhat Ignition 🚀
 
-After setting the variable, you can run the deployment with the Sepolia network:
+Deploying [ TokenModule ]
 
-```shell
-npx hardhat ignition deploy --network sepolia ignition/modules/Counter.ts
+Batch #1
+  Executed TokenModule#ERC1604FT
+
+[ TokenModule ] successfully deployed 🚀
+
+Deployed Addresses
+
+TokenModule#ERC1604FT - 0xd14ABE99C51c84919b519BA6826a032755B9782C
 ```
