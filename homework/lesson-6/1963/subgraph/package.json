@@ -1,0 +1,13 @@
+{
+  "name": "erc1963-subgraph",
+  "scripts": {
+    "codegen": "graph codegen",
+    "build": "graph build"
+  },
+  "dependencies": {
+    "@graphprotocol/graph-ts": "0.35.0"
+  },
+  "devDependencies": {
+    "@graphprotocol/graph-cli": "0.68.0"
+  }
+}

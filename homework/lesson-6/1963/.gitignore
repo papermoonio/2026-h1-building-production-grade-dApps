@@ -1,0 +1,19 @@
+# Env and secrets
+.env
+
+# Foundry
+broadcast/
+cache/
+out/
+lib/
+
+# Subgraph
+subgraph/node_modules/
+subgraph/build/
+subgraph/generated/
+
+# Node
+node_modules/
+
+# OS
+.DS_Store

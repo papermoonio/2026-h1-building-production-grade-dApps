@@ -1,0 +1,8 @@
+type ValueUpdate @entity {
+  id: ID!
+  user: Bytes!
+  newValue: BigInt!
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}

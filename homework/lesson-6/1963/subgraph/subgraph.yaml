@@ -1,0 +1,24 @@
+specVersion: 1.0.0
+schema:
+  file: ./schema.graphql
+dataSources:
+  - kind: ethereum/contract
+    name: ERC1963
+    network: mainnet
+    source:
+      address: "0x02241Ddc61Bbe29083E94F89b563D34cFf6db3de"
+      abi: ERC1963
+      startBlock: 4800202
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - ValueUpdate
+      abis:
+        - name: ERC1963
+          file: ./abi/ERC1963.json
+      eventHandlers:
+        - event: ValueUpdated(indexed address,uint256)
+          handler: handleValueUpdated
+      file: ./src/mapping.ts
