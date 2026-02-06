@@ -1,0 +1,20 @@
+{
+  "name": "miniswap-test",
+  "version": "1.0.0",
+  "description": "MiniSwap local testing",
+  "private": true,
+  "scripts": {
+    "compile": "hardhat compile",
+    "test": "hardhat test",
+    "node": "hardhat node",
+    "deploy": "hardhat run deploy.ts"
+  },
+  "devDependencies": {
+    "hardhat": "^2.14.0",
+    "ethers": "^5.7.2",
+    "chai": "^4.3.7",
+    "@nomiclabs/hardhat-ethers": "^2.2.3",
+    "@nomiclabs/hardhat-waffle": "^2.0.6",
+    "ethereum-waffle": "^4.0.10"
+  }
+}

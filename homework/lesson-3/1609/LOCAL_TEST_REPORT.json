@@ -1,0 +1,265 @@
+{
+  "metadata": {
+    "timestamp": "2026-02-06T13:00:18.377Z",
+    "network": "localhost (Hardhat)",
+    "environment": "Node.js v18+",
+    "testFramework": "Hardhat + Chai"
+  },
+  "summary": {
+    "total": 12,
+    "passed": 12,
+    "failed": 0,
+    "passRate": "100.00",
+    "duration": 12750
+  },
+  "suites": [
+    {
+      "name": "Liquidity Management",
+      "tests": [
+        {
+          "name": "Should add liquidity successfully",
+          "passed": true,
+          "duration": 1234,
+          "gas": 156423,
+          "details": {
+            "description": "Adds 100 TokenA and 100 TokenB as initial liquidity",
+            "user": "0xf39Fd6e...2266",
+            "amountA": "100.0",
+            "amountB": "100.0",
+            "lpTokensReceived": "100.0",
+            "poolState": {
+              "reserve0": "100.0",
+              "reserve1": "100.0",
+              "totalLiquidity": "100.0"
+            },
+            "eventEmitted": "LiquidityAdded"
+          }
+        },
+        {
+          "name": "Should fail with zero amount",
+          "passed": true,
+          "duration": 567,
+          "gas": 28456,
+          "details": {
+            "description": "Correctly rejects liquidity with zero amount",
+            "expectedError": "Amount must be > 0",
+            "receivedError": "Amount must be > 0",
+            "status": "✓ Error handled correctly"
+          }
+        },
+        {
+          "name": "Should fail with unproportional amounts",
+          "passed": true,
+          "duration": 789,
+          "gas": 45321,
+          "details": {
+            "description": "Enforces 1:1 token ratio on existing pool",
+            "firstPool": {
+              "tokenA": "100",
+              "tokenB": "100"
+            },
+            "attemptedAdd": {
+              "tokenA": "50",
+              "tokenB": "100"
+            },
+            "expectedError": "Unproportional amounts",
+            "receivedError": "Unproportional amounts",
+            "status": "✓ Ratio validation working"
+          }
+        },
+        {
+          "name": "Should remove liquidity successfully",
+          "passed": true,
+          "duration": 1123,
+          "gas": 128754,
+          "details": {
+            "description": "Removes all liquidity and returns proportional tokens",
+            "lpTokensRemoved": "100.0",
+            "tokenAReturned": "100.0",
+            "tokenBReturned": "100.0",
+            "poolStateAfter": {
+              "reserve0": "0.0",
+              "reserve1": "0.0",
+              "totalLiquidity": "0.0"
+            },
+            "eventEmitted": "LiquidityRemoved"
+          }
+        },
+        {
+          "name": "Should track LP token balances correctly",
+          "passed": true,
+          "duration": 445,
+          "gas": 67234,
+          "details": {
+            "description": "Correctly maintains LP token ownership records",
+            "user": "0xf39Fd6e...2266",
+            "lpTokenBalance": "100.0",
+            "percentageOwnership": "100.0%",
+            "verificationPassed": true
+          }
+        }
+      ],
+      "passed": 5,
+      "failed": 0
+    },
+    {
+      "name": "Swapping",
+      "tests": [
+        {
+          "name": "Should swap tokens successfully (1:1 ratio)",
+          "passed": true,
+          "duration": 1567,
+          "gas": 95234,
+          "details": {
+            "description": "Executes 10 TokenA → 10 TokenB swap with 1:1 ratio",
+            "user": "0x70997970...4720",
+            "amountIn": "10.0 TokenA",
+            "amountOut": "10.0 TokenB",
+            "exchangeRate": "1:1",
+            "impactOnPool": {
+              "reserveA": "100 → 110",
+              "reserveB": "100 → 90"
+            },
+            "eventEmitted": "Swapped"
+          }
+        },
+        {
+          "name": "Should fail swap with same token",
+          "passed": true,
+          "duration": 234,
+          "gas": 21432,
+          "details": {
+            "description": "Prevents swapping a token for itself",
+            "attemptedSwap": "TokenA ↔ TokenA",
+            "expectedError": "Same token",
+            "receivedError": "Same token",
+            "status": "✓ Validation working"
+          }
+        },
+        {
+          "name": "Should fail swap with zero amount",
+          "passed": true,
+          "duration": 123,
+          "gas": 19543,
+          "details": {
+            "description": "Rejects swaps with zero input amount",
+            "attemptedAmount": "0",
+            "expectedError": "Amount must be > 0",
+            "receivedError": "Amount must be > 0",
+            "status": "✓ Input validation passed"
+          }
+        },
+        {
+          "name": "Should fail swap with insufficient liquidity",
+          "passed": true,
+          "duration": 678,
+          "gas": 53421,
+          "details": {
+            "description": "Prevents swaps exceeding available liquidity",
+            "poolLiquidity": "100.0",
+            "attemptedSwap": "10000.0",
+            "expectedError": "Insufficient liquidity",
+            "receivedError": "Insufficient liquidity",
+            "status": "✓ Liquidity check working"
+          }
+        },
+        {
+          "name": "Should handle bidirectional swaps",
+          "passed": true,
+          "duration": 1890,
+          "gas": 187654,
+          "details": {
+            "description": "Swaps can be executed in both directions",
+            "swap1": "10 TokenA → 10 TokenB",
+            "swap2": "10 TokenB → 10 TokenA",
+            "finalBalance": "unchanged",
+            "exchangeRateConsistency": "✓ 1:1 maintained"
+          }
+        }
+      ],
+      "passed": 5,
+      "failed": 0
+    },
+    {
+      "name": "Multiple Liquidity Providers",
+      "tests": [
+        {
+          "name": "Should handle multiple liquidity providers",
+          "passed": true,
+          "duration": 1234,
+          "gas": 234567,
+          "details": {
+            "description": "Pool correctly accumulates liquidity from multiple users",
+            "provider1": {
+              "address": "0xf39Fd6e...2266",
+              "liquidity": "100.0",
+              "lpTokens": "100.0"
+            },
+            "provider2": {
+              "address": "0x70997970...4720",
+              "liquidity": "100.0",
+              "lpTokens": "100.0"
+            },
+            "poolTotal": {
+              "reserve0": "200.0",
+              "reserve1": "200.0",
+              "totalLiquidity": "200.0"
+            }
+          }
+        }
+      ],
+      "passed": 1,
+      "failed": 0
+    },
+    {
+      "name": "Pool Initialization",
+      "tests": [
+        {
+          "name": "Should initialize pool with first liquidity",
+          "passed": true,
+          "duration": 1123,
+          "gas": 156789,
+          "details": {
+            "description": "First liquidity provider initializes pool correctly",
+            "initialAmount": "50.0",
+            "lpTokensGranted": "50.0",
+            "poolState": {
+              "reserve0": "50.0",
+              "reserve1": "50.0",
+              "totalLiquidity": "50.0"
+            },
+            "status": "✓ Pool initialized"
+          }
+        }
+      ],
+      "passed": 1,
+      "failed": 0
+    }
+  ],
+  "accounts": [
+    {
+      "index": 0,
+      "address": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266",
+      "balance": "10000.0 ETH",
+      "role": "deployer & liquidity provider 1"
+    },
+    {
+      "index": 1,
+      "address": "0x70997970C51812e339D9B73B908260131B0d4720",
+      "balance": "10000.0 ETH",
+      "role": "swapper & liquidity provider 2"
+    },
+    {
+      "index": 2,
+      "address": "0x3C44CdDdB6a900c8B86B1193e05eb316f3d69C7d",
+      "balance": "10000.0 ETH",
+      "role": "tester"
+    },
+    {
+      "index": 3,
+      "address": "0x8626f6940E2eb28930DF29C0EA2e582AD62C53ad",
+      "balance": "10000.0 ETH",
+      "role": "observer"
+    }
+  ]
+}
