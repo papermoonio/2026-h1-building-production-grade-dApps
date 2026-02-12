@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { ethers } from 'ethers'
-import { ERC1604FT_ADDRESS, ERC1604FT_ABI, RPC } from '../constants'
+import { ERC1589_ADDRESS, ERC1589_ABI, RPC } from '../constants'
 
 interface TokenProps {
   provider: ethers.BrowserProvider
@@ -23,7 +23,7 @@ export const Token = ({ provider, account, canSendTx = false }: TokenProps) => {
 
   const loadMetadata = async () => {
     try {
-      const token = new ethers.Contract(ERC1604FT_ADDRESS, ERC1604FT_ABI, readProvider as any)
+      const token = new ethers.Contract(ERC1589_ADDRESS, ERC1589_ABI, readProvider as any)
       const [n, s, d, ts] = await Promise.all([
         token.name(),
         token.symbol(),
@@ -51,7 +51,7 @@ export const Token = ({ provider, account, canSendTx = false }: TokenProps) => {
       return
     }
     try {
-      const token = new ethers.Contract(ERC1604FT_ADDRESS, ERC1604FT_ABI, readProvider as any)
+      const token = new ethers.Contract(ERC1589_ADDRESS, ERC1589_ABI, readProvider as any)
       const bal = await token.balanceOf(account)
       const dec = await token.decimals()
       const formatted = Number(ethers.formatUnits(bal, Number(dec)))
@@ -75,7 +75,7 @@ export const Token = ({ provider, account, canSendTx = false }: TokenProps) => {
       const signerAddr = await signer.getAddress()
       if (!signerAddr) return setStatus('No signer available')
 
-      const token = new ethers.Contract(ERC1604FT_ADDRESS, ERC1604FT_ABI, signer as any)
+      const token = new ethers.Contract(ERC1589_ADDRESS, ERC1589_ABI, signer as any)
       const dec = decimals ?? 18
       const amountWei = ethers.parseUnits(transferAmount, dec)
       const tx = await token.transfer(transferTo, amountWei)
@@ -98,7 +98,7 @@ export const Token = ({ provider, account, canSendTx = false }: TokenProps) => {
       // mint expects an integer amount (contract multiplies by 10**18 internally)
       const amt = BigInt(mintAmount)
       const signer = await provider.getSigner()
-      const token = new ethers.Contract(ERC1604FT_ADDRESS, ERC1604FT_ABI, signer as any)
+      const token = new ethers.Contract(ERC1589_ADDRESS, ERC1589_ABI, signer as any)
       const tx = await token.mint(amt)
       setStatus(`Sent mint tx ${tx.hash}, waiting...`)
       await tx.wait()

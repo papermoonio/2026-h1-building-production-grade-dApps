@@ -43,7 +43,7 @@ npx hardhat ignition deploy ignition/modules/Counter.ts
 To run the deployment to Polkadot TestNet, you can run the deployment with the Polkadot TestNet network:
 
 ```shell
-$ npx hardhat ignition deploy ./ignition/modules/ERC1604FT.ts --network polkadotTestNet
+$ npx hardhat ignition deploy ./ignition/modules/ERC1589.ts --network polkadotTestNet
 [dotenv@17.2.3] injecting env (1) from .env -- tip: 🔐 prevent committing .env to code: https://dotenvx.com/precommit
 ✔ Confirm deploy to network polkadotTestNet (420420417)? … yes
 Hardhat Ignition 🚀
@@ -57,5 +57,5 @@ Batch #1
 
 Deployed Addresses
 
-TokenModule#ERC1604FT - 0xd14ABE99C51c84919b519BA6826a032755B9782C
+TokenModule#ERC1589 - 0x7eF2e8Aca705BAB3d245384cdD023e7B62A60f1C
 ```

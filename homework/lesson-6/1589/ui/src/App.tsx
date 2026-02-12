@@ -104,8 +104,8 @@ function App() {
     <div className="app-container">
       <header className="app-header">
         <div className="brand">
-          <h1>ERC1604 Token Dashboard</h1>
-          <div className="subtitle">Manage and interact with the ERC1604FT token</div>
+          <h1>ERC1589 Token Dashboard</h1>
+          <div className="subtitle">Manage and interact with the ERC1589 token</div>
           {!account && (
             <div className="connect-row">
               <ConnectWallet onConnect={handleConnect} />
